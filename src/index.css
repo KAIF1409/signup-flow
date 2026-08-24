@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-black font-sans text-white antialiased;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  ::selection {
+    @apply bg-accent/40 text-white;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* Uppercase eyebrow label above inputs */
+  .field-label {
+    @apply mb-1.5 block text-[11px] font-semibold uppercase tracking-[0.16em] text-white/55;
+  }
+
+  /* Shared dark input surface */
+  .field-input {
+    @apply w-full rounded-xl border border-white/10 bg-[#141417] px-4 py-3.5 text-sm font-medium text-white outline-none transition-all duration-200 placeholder:text-white/30 focus:border-accent/70 focus:ring-2 focus:ring-accent/25;
+  }
+
+  .field-input-error {
+    @apply border-red-500/70 focus:border-red-500 focus:ring-red-500/20;
+  }
+
+  /* Inline error message under a field */
+  .error-text {
+    @apply mt-1.5 flex items-start gap-1.5 text-xs font-medium text-red-400;
+  }
+
+  /* Generic dark card */
+  .card-surface {
+    @apply rounded-2xl border border-white/10 bg-white/[0.04];
+  }
+
+  /* Purple -> magenta gradient text */
+  .text-gradient {
+    @apply bg-gradient-to-r from-accent to-accent-hot bg-clip-text text-transparent;
+  }
+}
+
+@layer utilities {
+  .scrollbar-none {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+}
